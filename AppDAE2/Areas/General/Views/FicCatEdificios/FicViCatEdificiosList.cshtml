@@ -1,0 +1,95 @@
+﻿@model IEnumerable<AppDAE2.Models.eva_cat_edificios>
+
+@{
+    ViewData["Title"] = "FicViCatEdificiosList";
+}
+
+<h2>FicViCatEdificiosList</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEdificio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Alias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DesEdificio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prioridad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clave)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaReg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaUltMod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioReg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioMod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Borrado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEdificio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DesEdificio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prioridad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clave)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaReg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaUltMod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsuarioReg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsuarioMod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Borrado)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
