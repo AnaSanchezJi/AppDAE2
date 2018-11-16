@@ -18,7 +18,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Alias)
             </th>
-            <th>
+            <th> 
                 @Html.DisplayNameFor(model => model.DesEdificio)
             </th>
             <th>
@@ -86,7 +86,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "FicViCatEdificiosDetalle", new { id=item.IdEdificio}) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>

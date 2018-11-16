@@ -34,5 +34,20 @@ namespace AppDAE2.Areas.General.Controllers
             }
         }
 
+        public IActionResult FicViCatEdificiosDetalle(int id)
+        {
+            try
+            {
+                FicService = new FicSrcCatEdificiosList();
+                eva_cat_edificios FicLista = FicService.FicGetDetailCatEdificios(id).Result;
+                ViewBag.Title = "Detalle de edificios";
+                return View(FicLista);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
     }
 }

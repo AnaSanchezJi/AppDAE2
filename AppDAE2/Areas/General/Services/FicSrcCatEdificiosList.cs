@@ -31,6 +31,16 @@ namespace AppDAE2.Areas.General.Services
             }
             return new List<eva_cat_edificios>();
         }
+        public async Task<eva_cat_edificios> FicGetDetailCatEdificios(int id)
+        {
+            HttpResponseMessage FicResponse = await this.FiClient.GetAsync("api/"+id);
+            if (FicResponse.IsSuccessStatusCode)
+            {
+                var FicRespuesta = await FicResponse.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<eva_cat_edificios>(FicRespuesta);
+            }
+            return new eva_cat_edificios();
+        }
         
     }
 }
