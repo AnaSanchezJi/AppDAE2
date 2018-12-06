@@ -13,10 +13,12 @@ namespace AppDAE2.Areas.General.Controllers
     {
         FicSrcCatEdificiosList FicService;
         List<eva_cat_edificios> FicLista;
+        eva_cat_edificios edi;
 
         public FicCatEdificiosController() {
-            
-         }
+            FicService = new FicSrcCatEdificiosList();
+        }
+        //Lista Edificio-------------------------------------------
         public IActionResult FicViCatEdificiosList()
         {
             try
@@ -25,15 +27,13 @@ namespace AppDAE2.Areas.General.Controllers
                 FicLista = FicService.FicGetListCatEdificios().Result;
                 ViewBag.Title = "Catalogo de edificios";
                 return View(FicLista);
-                   
             }
             catch (Exception e) {
-
                 throw;
-                
             }
         }
-
+   
+        //Detalle Edificio------------------------------------------
         public IActionResult FicViCatEdificiosDetalle(int id)
         {
             try
@@ -47,6 +47,53 @@ namespace AppDAE2.Areas.General.Controllers
             {
                 throw;
             }
+        }
+
+        //Editar edificio
+        public IActionResult FicViCatEdificiosUpdate(short id)
+        {
+            try
+            {
+                FicService = new FicSrcCatEdificiosList();
+                edi = FicService.FicGetDetailCatEdificios(id).Result;
+                ViewBag.Title = "Editar Edificio";
+                return View(edi);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public ActionResult FicViCatEdificiosUpdate(eva_cat_edificios edificio)
+        {
+            FicService.FicCatEdificiosUpdate(edificio).Wait();
+            return RedirectToAction("FicViCatEdificiosList");
+        }
+
+        //Nuevo Edificio 
+        public ActionResult FicViCatEificiosAdd()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult FicViCatEificiosAdd(eva_cat_edificios ed)
+        {
+            FicService.FicCatEdificiosCreate(ed).Wait();
+            return RedirectToAction("FicViCatEdificiosList");
+        }
+
+        //Eliminar Edificio----------------------------------------- 
+        public ActionResult FicViCatEdificiosDelete(short id)
+        {
+            if (id != null)
+            {
+                FicService.FicCatEdificiosDelete(id).Wait();
+                return RedirectToAction("FicViCatEdificiosList");
+            }
+            return null;
         }
 
     }
